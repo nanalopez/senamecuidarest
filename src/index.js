@@ -6,6 +6,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const morgan = require('morgan')
+var helmet = require('helmet');
 var cors = require('cors')
 
 
@@ -20,9 +21,11 @@ mongoose.connect(process.env.URLDB, {useNewUrlParser: true, useUnifiedTopology: 
 
 // Initialize the application
 const app = express();
+app.disable('x-powered-by');
 
 
 // Middlewares
+app.use(helmet());
 app.use('/static', express.static(__dirname + '/reportes'));
 app.use(bodyParser.json({limit: '50mb'}));
 app.use(bodyParser.urlencoded({extended: true}));
@@ -54,10 +57,10 @@ const corsOptions={
 }
 
 // Esta limita el acceso
-app.use(cors(corsOptions));
+// app.use(cors(corsOptions));
 
 // Esta es abierta para todo el mundo.
-// app.use(cors());
+app.use(cors());
 
 
 
