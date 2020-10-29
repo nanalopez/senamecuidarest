@@ -45,7 +45,7 @@ app.use(function (req, res, next) {
 const whitelist=['http://senamecuida.sertec-csge.com.co'];
 const corsOptions={
     origin: (origin,callback) => {
-        
+
         const existe = whitelist.some(dominio => dominio=== origin);
 
         if (existe) {
@@ -85,7 +85,7 @@ app.use("/api/reporteInsumo", require('./Routes/repInsumoRoutes'))
 app.use("/api/reporteLimpieza", require('./Routes/repLimpiezaRoutes'))
 app.use("/api/ingresoSuspendido", require('./Routes/ingresoSuspendidoRoutes'))
 app.use("/api/soporte", require('./Routes/soporteRoute'))
-
+app.use("/api/habilitar", require('./Routes/HabilitarUsuarios/habilitarRoutes'))
 
 // Run the server
 app.listen(process.env.PORT, () => {
