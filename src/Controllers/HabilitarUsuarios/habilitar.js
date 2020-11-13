@@ -1,4 +1,4 @@
-const UsuarioSuspendido = require('../../Models/tbl_ingresoSuspendido')
+const UsuarioSuspendido = require('../../Models/Ingreso/tbl_ingresoSuspendido')
 const {emailSend} = require('../HabilitarUsuarios/mailSuccess');
 
 exports.Listar_Suspendidos = async (req, res) => {
